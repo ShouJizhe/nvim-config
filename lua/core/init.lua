@@ -1,29 +1,41 @@
 -- basics
+-- 语法高亮
 vim.cmd('syntax on')
+-- 文件类型加载插件缩进
 vim.cmd('filetype plugin indent on')
-vim.opt.number         = true
-vim.opt.relativenumber = true
-vim.opt.termguicolors  = true
-vim.opt.shiftround     = true
-vim.opt.updatetime     = 100
-vim.opt.cursorline     = true
-vim.opt.autowrite      = true
+-- 展示行号
+vim.opt.number          = true
+-- 相对行号
+vim.opt.relativenumber  = true
+-- 24Bit颜色
+vim.opt.termguicolors   = true
+-- 缩进宽度对齐到 shiftwidth 的整数倍
+vim.opt.shiftround      = true
+-- 交换文件写入磁盘的更新时间
+vim.opt.updatetime      = 100
+-- 高亮光标行
+vim.opt.cursorline      = true
+-- 自动写入
+vim.opt.autowrite       = true
 if (vim.fn.has('termguicolors') == 1) then
 	vim.opt.termguicolors = true
 end
--- tabs
-vim.opt.autoindent  = true
-vim.opt.tabstop     = 4
-vim.opt.shiftwidth  = 4
-vim.opt.softtabstop = 4
+-- tab
+vim.opt.autoindent      = true
+vim.opt.tabstop         = 2
+vim.opt.shiftwidth      = 2
+vim.opt.softtabstop     = 2
 vim.opt.mouse       = 'a'
 vim.opt.expandtab   = true
 vim.opt.autowrite   = false
 vim.opt.formatoptions = ''
 
+-- 快捷键
 require("core.keymaps")
+
 --require("core.dvorak")	-- delete this line if you don't like using DVORAK
 require("core.plugins")
+
 require("core.gui")
 -- disable some useless standard plugins to save startup time
 -- these features have been better covered by plugins

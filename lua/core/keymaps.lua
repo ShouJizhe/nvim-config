@@ -14,41 +14,51 @@ local function set_bg_dark()
 	vim.cmd('colorscheme ' .. colors_name)
 end
 
--- keymaps
-vim.keymap.set('i', '<C-g>', '<esc>')
-vim.keymap.set('i', '<C-;>', '::') -- for C++ and Rust
-vim.keymap.set('n', '<leader>vl', set_bg_light)
-vim.keymap.set('n', '<leader>vd', set_bg_dark)
-vim.keymap.set('n', '<leader>', ':')
+vim.g.mapleader = ';'
+
+-- 主题
+vim.keymap.set('n', '<leader>bgl', set_bg_light)
+vim.keymap.set('n', '<leader>bgd', set_bg_dark)
+
+-- NvimTree
+vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<cr>')
+vim.keymap.set('n', '<leader>ef', ':NvimTreeFocus<cr>')
+-- vim.keymap.set('n', '<leader>er', ':NvimTreeRefresh<cr>')
+-- vim.keymap.set('n', '<leader>es', ':NvimTreeFindFile<cr>')
+-- vim.keymap.set('n', '<leader>ec', ':NvimTreeCollapse<cr>')
+
+-- vim.keymap.set('n', '<leader>', ':')
 -- f: file tree
-vim.keymap.set('n', '<F3>', ':NvimTreeToggle<cr>')
-vim.keymap.set('n', '<leader>ft', ':NvimTreeToggle<cr>')
-vim.keymap.set('n', '<leader>ff', ':NvimTreeFocus<cr>')
+-- vim.keymap.set('n', '<F3>', ':NvimTreeToggle<cr>')
 -- y: telescope
-vim.keymap.set('n', '<F9>', function() require 'telescope.builtin'.find_files {} end)
-vim.keymap.set('n', '<F10>', function() require 'telescope.builtin'.git_files {} end)
-vim.keymap.set('n', '<F11>', function() require 'telescope.builtin'.buffers {} end)
-vim.keymap.set({ 'n', 'i' }, '<C-p>', function() require 'telescope.builtin'.registers {} end)
+vim.keymap.set('n', '<leader>ff', function() require 'telescope.builtin'.find_files {} end)
+vim.keymap.set('n', '<leader>gf', function() require 'telescope.builtin'.git_files {} end)
+vim.keymap.set('n', '<leader>bf', function() require 'telescope.builtin'.buffers {} end)
+-- vim.keymap.set({ 'n', 'i' }, '<C-p>', function() require 'telescope.builtin'.registers {} end)
 -- w: window
-vim.keymap.set('n', '<leader>w1', '<c-w>o')
+-- vim.keymap.set('n', '<leader>wh', '<c-w>h')
+-- vim.keymap.set('n', '<leader>wj', '<c-w>j')
+-- vim.keymap.set('n', '<leader>wk', '<c-w>k')
+-- vim.keymap.set('n', '<leader>wl', '<c-w>l')
+-- vim.keymap.set('n', '<leader>w1', '<c-w>o')
 vim.keymap.set('n', '<leader>wx', ':x<cr>')
-vim.keymap.set('n', '<leader>w2', ':sp<cr>')
-vim.keymap.set('n', '<leader>w3', ':vs<cr>')
+vim.keymap.set('n', '-', ':sp<cr>')
+vim.keymap.set('n', '|', ':vs<cr>')
 -- window resize
-vim.keymap.set('n', '<m-9>', '<c-w><')
-vim.keymap.set('n', '<m-0>', '<c-w>>')
-vim.keymap.set('n', '<m-->', '<c-w>-')
-vim.keymap.set('n', '<m-=>', '<c-w>+')
+vim.keymap.set('n', '<S-Left>', '<c-w><')
+vim.keymap.set('n', '<S-Right>', '<c-w>>')
+vim.keymap.set('n', '<S-Down>', '<c-w>-')
+vim.keymap.set('n', '<S-Up>', '<c-w>+')
 -- b: buffer
-vim.keymap.set('n', '<leader>bn', ':bn<cr>')
-vim.keymap.set('n', '<leader>bp', ':bp<cr>')
-vim.keymap.set('n', '<leader>bd', ':Bdelete<cr>')
+-- vim.keymap.set('n', '<leader>bn', ':bn<cr>')
+-- vim.keymap.set('n', '<leader>bp', ':bp<cr>')
+-- vim.keymap.set('n', '<leader>bd', ':Bdelete<cr>')
 -- p: plugins
 vim.keymap.set('n', '<leader>pi', ':PackerInstall<cr>')
 vim.keymap.set('n', '<leader>pc', ':PackerClean<cr>')
 -- s: search
-vim.keymap.set('n', '<leader>ss', '/')
-vim.keymap.set('n', '<leader>sw', '/\\<lt>\\><left><left>')
+-- vim.keymap.set('n', '<leader>ss', '/')
+-- vim.keymap.set('n', '<leader>sw', '/\\<lt>\\><left><left>')
 -- l/g/w: language
 -- l: general
 -- g: goto
@@ -103,3 +113,14 @@ vim.keymap.set('n', '<leader>hR', ':Gitsigns reset_buffer')
 vim.keymap.set('n', '<leader>hb', ':Gitsigns blame_line<cr>')
 vim.keymap.set('n', '<leader>hd', ':Gitsigns diffthis<cr>')
 vim.keymap.set('n', '<leader>hs', ':<C-U>Gitsigns select_hunk<CR>')
+
+ -- Tabs
+vim.keymap.set('n', '<Tab>', ':bnext<CR>')
+vim.keymap.set('n', '<S-Tab>', ':bprev<CR>')
+
+-- 编辑
+vim.keymap.set('i', '<C-s>', '<ESC>:w<CR>')
+vim.keymap.set('n', '<C-s>', '<ESC>:w<CR>')
+-- vim.keymap.set('n', '<leader>l', line_number_toogle)
+
+
